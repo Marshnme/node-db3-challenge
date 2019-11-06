@@ -22,9 +22,9 @@ function findById(id){
 }
 
 function findSteps(id){
-    return  db.select('schemes.scheme_name', 'steps.instructions')
+    return  db.select('schemes.scheme_name','steps.step_number', 'steps.instructions')
     .from('schemes')
-    .join('steps', 'schemes.id', '=' , 'steps.scheme_id').where('schemes.id', '=', id);
+    .join('steps', 'schemes.id', '=' , 'steps.scheme_id').where('schemes.id', '=', id).orderBy('steps.step_number');
     
 }
 
